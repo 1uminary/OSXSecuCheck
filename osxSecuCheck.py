@@ -30,20 +30,6 @@ def nameDateTime():
 
     return result
 
-def win2Utf8(winStr):
-    """이 함수는 os._wrap_close 타입의 os.popen 결과를 utf-8 문자열로 변환함.
-    예제:
-        다음과 같이 사용:
-        >>> r = os.popen("dir")
-            u = win2Utf8(r)
-    return str: os._wrap_close 타입의 문자열 bytes 타입으로 encode 후 utf-8로 디코드 한 결과를 str 타입으로 반환.
-    """
-    print(winStr.read())
-    utf8Str = ((winStr.read()).encode()).decode("utf-8")
-    print("aaa")
-    print(utf8Str)
-    return utf8Str
-
 ndt = nameDateTime()
 host["name"] = ndt[0]
 host["date"] = ndt[1]
