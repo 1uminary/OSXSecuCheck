@@ -85,7 +85,7 @@ if result == "0" : host["PC-15"] = "false"
 elif result == "1" : host["PC-15"] = "true" 
 
 print(u"PC-16 화면보호기 대기 시간 설정 및 재시작 시 암호 보호 설정")
-result = os.popen("defaults -currentHost read com.apple.screensaver | grep idleTime").read()
+result = os.popen("defaults -currentHost read 'com.apple.screensaver' | grep idleTime").read()
 result = int(re.findall("\d+", result)[0])
 host["screenSaverIdelTime"] = result
 if result in range(1,601) : host["PC-16"] = "true"
