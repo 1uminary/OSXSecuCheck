@@ -61,14 +61,24 @@ else: host["PC-01"] = "false"
 if resultCheck1 == 0 : host["PC-02"] = "true"
 else: host["PC-02"] = "false"
 
+host["PC-03"] = "null"
+
 print(u"PC-04 공유 폴더 제거")
 host["PC-04"] = "null"
 
 print(u"PC-05 불필요한 서비스 제거")
 host["PC-05"] = "null"
 
+host["PC-06"] = "null"
+
 print(u"PC-07 파일 시스템을 NTFS로 포맷")
 host["PC-07"] = "null"
+
+host["PC-08"] = "null"
+
+host["PC-09"] = "null"
+
+host["PC-10"] = "null"
 
 print(u"PC-11 최신 서비스팩 적용")
 result = os.popen("sw_vers | grep ProductVersion").read()
@@ -76,6 +86,12 @@ r = result.split()
 host["version"] = r[1]
 if r[1] == "10.13.4" : host["PC-11"] = "true"
 else: host["PC-11"] = "false"
+
+host["PC-12"] = "null"
+
+host["PC-13"] = "null"
+
+host["PC-14"] = "null"
 
 print(u"PC-15 OS에서 제공하는 침입차단 기능 활성화")
 result = os.popen("defaults read /Library/Preferences/com.apple.alf globalstate").read()
@@ -85,11 +101,19 @@ if result == "0" : host["PC-15"] = "false"
 elif result == "1" : host["PC-15"] = "true" 
 
 print(u"PC-16 화면보호기 대기 시간 설정 및 재시작 시 암호 보호 설정")
-result = os.popen("defaults -currentHost read 'com.apple.screensaver' | grep idleTime").read()
+result = os.popen("defaults -currentHost read \"com.apple.screensaver\" | grep idleTime").read()
 result = int(re.findall("\d+", result)[0])
 host["screenSaverIdelTime"] = result
 if result in range(1,601) : host["PC-16"] = "true"
 elif result > 600 : host["PC-16"] = "false"
+
+host["PC-17"] = "null"
+
+host["PC-18"] = "null"
+
+host["PC-19"] = "null"
+
+host["PC-20"] = "null"
 
 stringOfJsonData = json.dumps(host, indent=4, sort_keys=False)
 fileName = ndt[0] + "_" + ndt[1] + ".json"
